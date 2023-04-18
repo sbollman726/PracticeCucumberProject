@@ -18,22 +18,33 @@
 #Sample Feature Definition Template
 @login @regression
 Feature: Crater app user management
-  Users with permisssions should be able to interact
-  with application on successful login
+  Users with permission should be able to interact
+  with the application on successful login
+  
+  Background: 
+  	Given As a user, I am on the login page
+  
 
-  @validLogin @loginTests @smokeTest
-  Scenario: Successful log in
-    Given I am on the login page
-   	When I enter valid username and password
-    And I click the login button
-    Then I see the dashboard page
+  @validlogin @loginTests @smokeTest
+  Scenario: Successful login
+    When I enter valid username and valid password
+    And I click on login button
+    Then I should be on the user profile page
+
+  @invalidEmailLogin @loginTests
+  Scenario: Invalid username login
+    When I enter invalid username and valid password
+    And I click on login button
+    Then I should see an error message
+    And I should not be logged in
     
-	@invalidLogin @loginTests
-	Scenario: Invalid login attempts
-		Given I am on the login page
-		When I enter an invalid username and password
-		And I click the login button
-		Then I see an error message
-		And I am not logged in
+	@invalidPasswordLogin @loginTests
+  Scenario: Invalid password login
+    When I enter valid username and invalid password
+    And I click on login button
+    Then I should see an error message
+    And I should not be logged in
+
     
- 
+    
+    

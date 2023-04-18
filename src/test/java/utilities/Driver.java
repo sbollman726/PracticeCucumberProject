@@ -1,6 +1,5 @@
 package utilities;
 
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,8 +15,6 @@ public class Driver {
 		
 		if(driver == null) {
 			driver = new ChromeDriver();
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
 			}
 			return driver;	
 	}
