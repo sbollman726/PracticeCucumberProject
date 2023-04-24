@@ -1,5 +1,7 @@
 package utilities;
 
+import java.util.Random;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -44,6 +46,13 @@ public class BrowserUtils {
 		js = (JavascriptExecutor) Driver.getDriver();
 		js.executeScript("arguments[0].scrollIntoView();", element);	
 	}
+	
+	public int randonNumber() {
+		Random randy = new Random();
+		int randomNum = randy.nextInt((999 - 100) + 1) + 100;
+		return randomNum;
+	}
+	
 	
 	
 	

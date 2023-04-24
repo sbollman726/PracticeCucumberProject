@@ -24,4 +24,6 @@ public class AmazonHomePage {
 	public WebElement searchButton;
 	
 	
+	
+	
 }

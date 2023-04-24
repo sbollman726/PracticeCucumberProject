@@ -1,17 +1,33 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.BrowserUtils;
 import utilities.Driver;
 
 public class CraterItemsPage {
 
-	
+	CraterItemsPage itemsPage;
+	BrowserUtils utils;
 	public CraterItemsPage() {
 		PageFactory.initElements(Driver.getDriver(), this);
 		
+	}
+	
+	public void AddItemInfo(String itemname, int itemPrice, String itemUnit, String itemDescription) {
+		itemsPage = new CraterItemsPage();
+		utils = new BrowserUtils();
+		itemsPage.addItemName.sendKeys(itemname);
+		itemsPage.addItemPrice.sendKeys(itemUnit.toString());
+		
+		itemsPage.addItemUnit.click();
+		utils.waitUntilElementVisible(itemsPage.addItem_pc_unit);
+		Driver.getDriver().findElement(By.xpath("//span[text()='"+itemUnit+"']")).click();
+		
+		itemsPage.addItemDescription.sendKeys(itemDescription);
 	}
 	
 	
@@ -54,6 +70,15 @@ public class CraterItemsPage {
 	
 	@FindBy ( xpath = "//button[@type='submit']")
 	public WebElement updateItemButton;
+	
+	@FindBy ( xpath = "//span[@class='flex text-sm font-medium cursor-pointer select-none text-primary-400']")
+	public WebElement actionsDropdown;
+	
+	@FindBy ( xpath = "//a[@class='text-gray-700 group flex items-center px-4 py-2 text-sm font-normal']")
+	public WebElement itemDeleteDropdown;
+	
+	@FindBy ( xpath = "//button[text()='Ok']")
+	public WebElement itemConfirmDeleteBTN;
 	
 	
 }

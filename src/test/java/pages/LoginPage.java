@@ -37,6 +37,8 @@ public class LoginPage {
 		loginBtn.click();
 	}
 	
+	@FindBy ( xpath = "//span[text()='Field is required']")
+	public WebElement nullInputErrorMessage;
 	
 	
 	

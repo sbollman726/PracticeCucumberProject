@@ -44,7 +44,21 @@ Feature: Crater app user management
     And I click on login button
     Then I should see an error message
     And I should not be logged in
-
+    
+    @invalidLoginAttemps
+    Scenario Outline: Invalid credential login attempt
+    When I enter "<email>" and "<password>"
+    And I click on login button
+    Then I should see an error message
+    And I should not be logged in
+    
+    Examples:
+    | email                           | password         |
+    | entityadmin@primetechschool.com | hellopassword    |
+		| entityAd@primetechschool.com    | primetech@school |
+		|                                 | nothing456       |
+		| nothing@primetechschool.com     | 								 |
+    
     
     
     
